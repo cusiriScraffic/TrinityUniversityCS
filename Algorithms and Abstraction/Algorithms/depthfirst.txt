@@ -1,0 +1,8 @@
+- How it should work, 1) visit a first then then color it, then a calls b (for a going put from u)
+Then recursively call with neighbors.
+
+If no neighbors then,
+
+Then goes back to see if there are any remaining white nodes
+
+Afterwards, 

@@ -1,0 +1,29 @@
+Linked list is a series of nodes with elements of type T within them that are linked together.Holds information about previous and next node
+as well.
+Order within a linked list is determined by the pointer in each object.
+Given an element x x.next points to successor in the list and x.prev points to the predecessor in the list.
+If x.prev = nill then there is no predecessor and therefore is the first element of the head
+If x.next is = Nil then it has no successor and is the end or Tail of the list
+l.head points to the first element of the list. If L.head is Nill then the list is empty
+
+Searching a linked list 
+ List search finds the first element with key k in the list L by a simple linear search, returning a pointer to this element. If no object with key k appears in the list,then return nil
+
+LIST-SEARCH.(L;k)1 x= L.head ;2 while x!= NIL and x.key != k
+  x = x.next;4 return x
+
+Insert into a linked list
+Given the element x
+
+LIST-INSERT(L,x)
+x.next = L.head
+if L.head != Nil
+L.head.prev =x // Which can cascade to denote the prev attribute of the object that L.head points to
+
+Deleting from a linked list
+Removes and element x from a linked list L. Must be given a pointer to x and the splices x out of the list by updating pointers. (If we want to delete a certain element with a given key we must) first find it with ListSearch to retrieve 
+if x.prev != Nil
+x.prev.next =x.next
+else L.head = x.next
+if x.next !- nill 
+x.next.prev = x.prev

@@ -1,0 +1,19 @@
+- Using tree set explore different options, besides brute force
+- Make some choice given an operation, could or could not be what we want.
+- Faster because it does not explore the entire tree
+- Greedy algorithms can be O(n) worst case could be n log(n) after a sort 
+- You have the choice to replace a bit of the tree with the greedy solution giving optimal solutions
+-Ch 16.1 Scheduling events, sorting events by their lengths and choosing the shortest events
+Sorts events by their finish times
+Knapsack problem, is also greedy. 
+
+Huffman Coding
+Algorithm for compression
+certain characters in english are more frequent than other
+Prefix precoding or just coding, -> Code that restricts character with what same prefix which leads to ambiguity 
+Could also be rep by binary try. 
+Sorts by frequency, most freq is a the top near the root and least freq is at the bottom
+Store the sum of the freq within an internal node store within a priority queue 
+
+-Data Structure for disjoint sets, aka Union Find
+Imagine you have a bunch of elements in different sets. Check if two elements are the same set and efficiently merge sense together 

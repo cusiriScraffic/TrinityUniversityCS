@@ -1,0 +1,76 @@
+August 26 2016 Notes
+
+- There are cpp files and there are header files. Use header files to include methods in other files
+- You can put source code i separate files and cpp files need header files that give the declarations for the function eg signature. 
+You can compile them separately and link them up later, header files should have guards.
+
+August 29 2016————————
+
+-g++ -c compile gives a .o file
+
+helloworld.cpp -> helloword.o
+                              -> linker  a.out
+helper.cpp -> helper.o          
+
+Pointers and Arrays————
+
+- * means the contents within
+- & Means the address of
+so for(auto& x : v) basically is saying instead of copying all the elements into x, 
+give me all the addresses of all the elements within v
+
+char [6] = {‘a’….}
+char * p; pointer to character
+char *p = nullptr // null pointer
+char*p = & v[3] // takes the address of the object and returns it
+char c = *p // this dereferences the pointer, the object that p points to.
+Basically this returns the address of a particular pointer
+
+
+When you are calling a function in c++, you are creating copies and not actually changing the actual values. You have to use pointers
+
+Passing by references, int&x and int&y
+
+August 31st 2016 ——-
+
+
+- Have the option of constants e.g const int x = 5 , why better than define?
+because there is more type checking, when it is compiled(helps us catch bugs e.g double instead of int)
+- Why pass an object by reference if i am not modifying it? Making the copy is really slow
+- Also have the option of auto x = 5 type is deduced from the initializer, just like scala var x = 5
+- Ranged For loop
+-Dynamic Memory Allocation 
+Variables are allocated on the stack, corresponding variables are destroyed when the stack ends. Therefore dynamic memory allocation is needed to allocate memory on the free stop or heap
+e.g the new operator  and the delete allocator instead of malloc and falloc but with arrays use delete[]v; NOT DELETE
+
+Sept 7 2016 Class Cancelled
+Sept 9th Class
+-Copy Constructor in order to copy assignment to tell the object what you need it  to do, especially when you have a vector.
+- When variables are local, they are deleted at the end of a code block there a copy constructor is created but we don’t want this.
+us add() function instead of plus operator or us Move constructor
+[What is a destructor]
+-If you define move constructor you must define move assignment
+e.g Vector& operator=(Vector&& a) {
+	delete[] elem; // needs to point to the old memory and delete it
+	elem = a.elem;
+	sz = a.sz;
+	a.elem = nullptr;
+	a.sz = 0;
+	return *this;
+}
+
+Vetor is a resource handler which is managed by RAII(Resource acquisition is initialized)
+
+Templates just allows your to assign a type to a variable name.
+if you have a template class include it in the header
+-Template function 
+
+BOOK NOTES:
+
+-Vector object is a “Handle” containing a pointer to the elements and the number of elements or size.
+
+- You can use enumerations in order to specifically define user define types like classes but one by one
+enum class Color { red, blue, green };enum class Traffic_light { green, yellow, red };Color col = Color::red;Traffic_light light = Traffic_light::red;
+
+ [What is namespaces and when do you use it? When to use enumeration]
+

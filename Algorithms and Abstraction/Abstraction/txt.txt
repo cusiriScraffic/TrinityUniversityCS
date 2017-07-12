@@ -1,0 +1,2 @@
+Setting a buffer, setBuf and set ebuf
+

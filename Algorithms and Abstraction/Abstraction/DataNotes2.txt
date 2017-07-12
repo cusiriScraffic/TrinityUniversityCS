@@ -1,0 +1,59 @@
+Abstraction Mechanisms
+- Container -> An object holding a collection of elements therefore something like a vector is a container
+One problem is that it allocates elements using ‘new’ but never deallocates them. C++ does define an interface for a garbage collector, it is not guaranteed for freeing memory therefore we use a destructor delete[] name of a destructor is ~ followed by a class e.g  ̃Vector() { delete[] elem; }  Handle-to-data model
+- The technique of acquiring resources in a constructor and releasing them in a destructor, known as Resource Acquisition Is Initialization or RAII
+- The word virtual means ‘‘may be redefined later in a class derived from this one.
+A class with a pure virtual function is called an abstract class.  
+
+- Copying of an object of a class is defined by two members: a copy constructor and a copy assignment:
+The name this is predefined in a member function and points to the object for which the member function is called.
+
+Move Constructor &&… The && means ‘‘rvalue reference’’ and is a reference to which we can bind an rvalue (§6.4.1). The word ‘‘rvalue’’ is intended to complement ‘‘lvalue,’’ which roughly means ‘‘something that can appear on the left-hand side of an assignment.’
+
+Templets 
+A template is a class or a function that we parameterize with a set of types or values.
+
+Points, how they work and the syntax associated 
+// stack and the heap. get memory from heap using new not malloc
+ArrayStack<T>: public Stack<T>
+
+Hash Tables
+
+
+
+
+it needs to store and array that is dynamically allocated
+
+
+Queue —> ArrayQueue<T>
+T* container
+int size // capacity 
+// We will need a front and back
+int front 
+int back // When back reaches the end you can wrap it around to the front of the queue
+new index will be back = (back +1)% capacity and when they touch you know its full
+
+14 sept 2016
+can output user-defined types by overloading operators<< ostream& operator<<(ostream& os, const Vector& v) {
+for(i = 0; i< v.size(); ++i ){
+os << v[i] << ‘\n’}
+}
+
+Iterators // read on iterators
+
+Vectors
+v.at(3) is a range checking
+
+
+Array based list
+ insert
+- check if its full, if so grow the array
+if not for loop should go from right to left for(; ; —-) instead of ++ 
+
+remove
+from left to right 
+
+
+Still storing dynamically array but more operations are allowed eg insert into an idea or delete from an index and shifting.
+
+Iterator is doing the function of a pointers -> being able to point to a certain element within your array list and allow it to do for loops;; How to implement iterator - > it is a class inside an array. In the iterator you only need to store the current location/ address to where the iterator is pointing to. Just do operations on the pointers 

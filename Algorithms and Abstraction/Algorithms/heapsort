@@ -1,0 +1,9 @@
+#ifndef HEAP_SORT
+#define HEAP_SORT
+
+template<typename T> void heapsort(T begin, T end)
+{
+	
+};
+
+#endif

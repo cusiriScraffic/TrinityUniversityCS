@@ -1,0 +1,225 @@
+CREATE TABLE Customers
+(
+Customer_ID int,
+First_Name varchar(255),
+Last_Name varchar(255),
+Customer_Address varchar(255),
+Age int
+);
+
+CREATE TABLE Employees
+(
+Employee_ID int, 
+First_Name varchar(255),
+Last_Name varchar(255),
+Address varchar(255)
+);
+
+CREATE TABLE Store
+(
+Store_ID int,
+Store_Address varchar(255),
+Employee_ID int
+);
+
+INSERT INTO Customers (Customer_ID,First_Name, Last_Name, Customer_Address, Age)
+VALUES (1,’Tom’,’Baines’,’1 Trinity PL’, 21);
+INSERT INTO Customers (First_Name, Last_Name, Customer_Address, Age)
+VALUES (2,‘Tim’,’Locke’,’1 Trinity PL’, 22);
+INSERT INTO Customers (First_Name, Last_Name, Customer_Address, Age)
+VALUES (3,‘King’,’stairs’,’1 Trinity PL’, 22);
+INSERT INTO Customers (First_Name, Last_Name, Customer_Address, Age)
+VALUES (4,‘Mark’,’Lewis’,’1 Trinity PL’, 21);
+INSERT INTO Customers (First_Name, Last_Name, Customer_Address, Age)
+VALUES (5,‘Willian’,’Lopez’,’1 Trinity PL’, 21);
+INSERT INTO Customers (First_Name, Last_Name, Customer_Address, Age)
+VALUES (6,‘Kevin’,’Luiz’,’1 Trinity PL’, 25);
+INSERT INTO Customers (First_Name, Last_Name, Customer_Address, Age)
+VALUES (7,‘Diego’,’Costa’,’1 Trinity PL’, 21);
+INSERT INTO Customers (First_Name, Last_Name, Customer_Address, Age)
+VALUES (8,‘Frank’,’Lampard’,’1 Trinity PL’, 21);
+INSERT INTO Customers (First_Name, Last_Name, Customer_Address, Age)
+VALUES (9,‘Victor’,’Moses’,’1 Trinity PL’, 21);
+INSERT INTO Customers (First_Name, Last_Name, Customer_Address, Age)
+VALUES (10,‘Matic’,’Michael’,’1 Trinity PL’, 21);
+
+INSERT INTO Employees(Employee_ID,First_Name,Last_Name,Employee_Address)
+VALUES(1,’Frank’,’timothy’,’1 Scotsdale TN’);
+INSERT INTO Employees(Employee_ID,First_Name,Last_Name,Employee_Address)
+VALUES(2,’Tim’,’Titus’,’1 Scotsdale TN’);
+INSERT INTO Employees(Employee_ID,First_Name,Last_Name,Employee_Address)
+VALUES(3,’Fredrick’,’Tester’,’1 Kimsel NY’);
+INSERT INTO Employees(Employee_ID,First_Name,Last_Name,Employee_Address)
+VALUES(4,’Frank’,’Fern’,’dale TX’);
+INSERT INTO Employees(Employee_ID,First_Name,Last_Name,Employee_Address)
+VALUES(5,’Fin’,’Ficey’,’1 Scotsdale TN’);
+INSERT INTO Employees(Employee_ID,First_Name,Last_Name,Employee_Address)
+VALUES(6,’Friend’,’Best’,’sdale TN’);
+INSERT INTO Employees(Employee_ID,First_Name,Last_Name,Employee_Address)
+VALUES(7,’Fetch’,’Finger’,’1 Times TN’);
+INSERT INTO Employees(Employee_ID,First_Name,Last_Name,Employee_Address)
+VALUES(8,’Red’,’Meat’,’1 California TN’);
+INSERT INTO Employees(Employee_ID,First_Name,Last_Name,Employee_Address)
+VALUES(9,’Finder’,’Mac’,’1 Finding CA’);
+INSERT INTO Employees(Employee_ID,First_Name,Last_Name,Employee_Address)
+VALUES(10,’Example’,’Testing’,’1 FakeCity Utah’);
+
+INSERT INTO Store(Store_ID,Store_Address,Employee_Id)
+VALUES(1,’1 Trinity PL’,1);
+INSERT INTO Store(Store_ID,Store_Address,Employee_Id)
+VALUES(1,’1 Trinity PL’,2);
+INSERT INTO Store(Store_ID,Store_Address,Employee_Id)
+VALUES(1,’1 Trinity PL’,3);
+INSERT INTO Store(Store_ID,Store_Address,Employee_Id)
+VALUES(1,’1 Trinity PL’,4);
+INSERT INTO Store(Store_ID,Store_Address,Employee_Id)
+VALUES(2,’Utah Tester’,5);
+INSERT INTO Store(Store_ID,Store_Address,Employee_Id)
+VALUES(3,’1 Times PL’,6);
+INSERT INTO Store(Store_ID,Store_Address,Employee_Id)
+VALUES(4,’1 Favorite PL’,7);
+INSERT INTO Store(Store_ID,Store_Address,Employee_Id)
+VALUES(5,’1 Bread crum PL’,8);
+INSERT INTO Store(Store_ID,Store_Address,Employee_Id)
+VALUES(6,’1 Serious Tester PL’,9);
+INSERT INTO Store(Store_ID,Store_Address,Employee_Id)
+VALUES(7,’1 London PL’,10);
+
+SELECT First_Name, Last_Name, Employee_Address
+FROM Employees
+;
+// This is a very simple query to start off the project that prints off all current employees and their address
+
+SELECT DISTINCT Employees.First_Name, Employees.Last_Name ,Store.Employee_ID ,Employee.Employee_ID , Store_Address
+FROM Employees, Store
+WHERE Store.Employee_ID = Employee.Employee_ID
+;
+// This query shows what employees work at which stores. The Distinct after the select prevents duplicates just in case some employees work at multiple stores. We just want to show them at one store not multiple
+
+SELECT First_Name as FirstName, Last_Name as LastName, Store_ID, count(FirstName)
+FROM Customers, Store
+WHERE Customers.Store_ID = Store.Store_ID
+ORDER BY DESC
+//This query collects the number of employees that have visited particular stores. It is ordered in descending order using the order by function 
+
+SELECT AVG(Age) as AverageAge, StoreID, Store_Address
+FROM Store,Customers
+WHERE Customer.Store_ID = Customer.Store_ID
+//This query Just gets the average ages of customers that go to specific shops
+
+SELECT Count(First_Name) as NumberEmployees, Store_Address
+FROM Store,Employees
+WHERE Employee.Store_ID = Store.Store_ID
+//This query Just gets the number of employees that go to specific shops
+
+SELECT First_Name, Last_Name, Store_Address, 
+FROM Customers, Store
+WHERE First_Name = ’Tom’ && Last_Name = ‘Baines’ && Customer.Customer_ID = Store.Customer_ID;
+// This is just a query that shows a current customer named Tom Baines at a particular store
+
+SELECT First_Name, Last_Name, Store_Address, 
+FROM Customers, Store
+WHERE First_Name = ’Tim’ && Last_Name = ‘Locke’ && Customer.Customer_ID = Store.Customer_ID;
+// This is just a query that shows a current customer named Tim Locke at a particular store
+
+SELECT First_Name, Last_Name, Store_Address, 
+FROM Employees, Store
+WHERE First_Name = ’Frank’ && Last_Name = ‘Timothy’ && Customer.Employee_ID = Store.Employee_ID;
+// This is just a query that shows a current Employees named Frank Timothy at a particular store where he works
+
+SELECT First_Name, Last_Name, Store_Address, 
+FROM Employees, Store
+WHERE First_Name = ’Tom’ && Last_Name = ‘Baines’ && Customer.Employee_ID = Store.Employee_ID;
+// This is just a query that shows a current customer named Tom Baines at a particular store
+
+1. Entity types
+Entity Name: Employees
+Entity Type: Weak (Regular or Weak Entity)
+Entity Definition: An employee that works at GameStop at a particular store
+Identifier: Employer_ID
+
+2. Entity types
+Entity Name: Customers
+Entity Type: Weak (Regular or Weak Entity)
+Entity Definition: A customer is someone who purchases something from one of the GameStop stores. They are stored within our database
+Identifier: Customer_ID
+
+3. Entity types
+Entity Name: Store
+Entity Type: Weak (Regular or Weak Entity)
+Entity Definition: The definition of a store is a GameStop location where a customer can purchase a video game and where GameStop employees work
+Identifier: Store_ID
+
+
+1. Relationship types
+Relationship Name: serve_consumer
+Relationship Type: (Binary Many-to-Many, One-to-Many, …)
+Relationship Description: This relationship is between employees and customers. You could have one employee serving one customer or multiple customers or no customers.
+Attributes: (Attributes attached to the relationship)
+
+2. Relationship types
+Relationship Name: works_at_store
+Relationship Type: (Binary Many-to-Many, One-to-Many, …)
+Relationship Description: This relationship is between employees and stores. You could have one employee working at one store or multiple stores but must work at at least one store.
+Attributes: (Attributes attached to the relationship)
+
+3. Relationship types
+Relationship Name: shopped_at
+Relationship Type: (Binary Many-to-Many, One-to-Many, …)
+Relationship Description: This relationship is between customers and stores. You could have one customer shopping at one store or multiple stores or no stores.
+Attributes: (Attributes attached to the relationship)
+
+1. Attributes
+Attribute Name: First_Name
+Attribute Type: simple (Simple, Composite, …)
+Attribute Definition: First name of a customer
+
+2. Attributes
+Attribute Name: Last_Name
+Attribute Type: simple (Simple, Composite, …)
+Attribute Definition: Last name of a customer
+
+3. Attributes
+Attribute Name: Customer_ID
+Attribute Type: simple (Simple, Composite, …)
+Attribute Definition: Customer ID
+
+4. Attributes
+Attribute Name: Customer_Address
+Attribute Type: simple (Simple, Composite, …)
+Attribute Definition: Customer’s Address
+
+5. Attributes
+Attribute Name: Store_ID
+Attribute Type: simple (Simple, Composite, …)
+Attribute Definition: Store ID
+
+6. Attributes
+Attribute Name: Store_Address
+Attribute Type: simple (Simple, Composite, …)
+Attribute Definition: Store’s Address
+
+7. Attributes
+Attribute Name: Employee_ID
+Attribute Type: simple (Simple, Composite, …)
+Attribute Definition: Store Employees
+
+8. Attributes
+Attribute Name: Employee_ID
+Attribute Type: simple (Simple, Composite, …)
+Attribute Definition: Employee ID
+
+9. Attributes
+Attribute Name: Employee_Address
+Attribute Type: simple (Simple, Composite, …)
+Attribute Definition: Employee’s Address
+
+10. Attributes
+Attribute Name: First_Name
+Attribute Type: simple (Simple, Composite, …)
+Attribute Definition: Employee’s First Name
+
+11. Attributes
+Attribute Name: Last_Name
+Attribute Type: simple (Simple, Composite, …)
+Attribute Definition: Employee’s Last Name
